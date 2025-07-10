@@ -22,7 +22,7 @@ const HomeProperties = () => {
     </section>;
 
     <section className='m-auto max-w-lg my-6 px-6'>
-        <Link href="/properties" className='bblock bg-black text-white texte-center py-4 px-6 roudned-xl hover:bg-gray-700'> View All Properties</Link>
+        <Link href="/properties" className='block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700'> View All Properties</Link>
 
     </section>
     </>
