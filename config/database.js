@@ -7,7 +7,7 @@ const connectDB = async () => {
 
   //if the database is already connected, dont connect again
   if (connected) {
-    console.log('Mogoose is already connected')
+    console.log('MogoDB is already connected')
     return
   }
 
