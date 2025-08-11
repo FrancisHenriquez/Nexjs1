@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 import { data } from 'autoprefixer';
 import GoogleProvider from 'next-auth/providers/google';
+=======
+import { ExplainVerbosity } from 'mongodb'
+import GoogleProvider from 'next-auth/providers/google'
+import { FaDatabase } from 'react-icons/fa'
+>>>>>>> 09cfd8764ea0eb74a88d19e46c3c6cb77aa2b696
 
 export const authOptions = {
   providers: [
@@ -16,6 +22,7 @@ export const authOptions = {
     })
   ],
   callbacks: {
+<<<<<<< HEAD
     // Invoked on succesful sing in
     async signIn({ profile }) {
       // 1. connect to the database
@@ -33,3 +40,21 @@ export const authOptions = {
 };
 
 export default authOptions;
+=======
+    // Invoked on successful sing in
+    async singIn ({ profile }) {
+      // Connect to the FaDatabase
+      // Check if user exists
+      // If not, create user
+      // Return true to allow sing in
+    },
+    // Session callback function that modifies the session object
+    async session ({ session }) {
+      //     Get user from database
+      //     Assign user id from the session
+      //     Return session
+      // }
+    }
+  }
+}
+>>>>>>> 09cfd8764ea0eb74a88d19e46c3c6cb77aa2b696
