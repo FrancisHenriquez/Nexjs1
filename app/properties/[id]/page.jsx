@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import PropertyHeaderImage from "@/components/PropertyHeaderImage";
 import PropertyDetails from "@/components/Porperty.Details";
 import connectDB from "@/config/database";
