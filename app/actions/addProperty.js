@@ -10,9 +10,9 @@ async function addProperty (formData) {
 
   const sessionUser = await getSessionUser()
 
-  // if (!sessionUser || !sessionUser.id) {
-  //   throw new Error('User id required')
-  // }
+  if (!sessionUser?.userId) {
+    throw new Error('User id required')
+  }
 
   const { userId } = sessionUser
 
@@ -55,6 +55,7 @@ async function addProperty (formData) {
   const newProperty = new Property(propertyData)
   await newProperty.save()
   revalidatePath('/', 'layout')
+  redirect(`/properties/${newProperty._id}`)
 }
 
 export default addProperty
