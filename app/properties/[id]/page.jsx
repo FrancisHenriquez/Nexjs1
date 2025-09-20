@@ -4,11 +4,16 @@ import PropertyDetails from '@/components/Porperty.Details';
 import PropertyImages from '@/components/PropertyImages';
 import connectDB from '@/config/database';
 import Property from '@/models/Property';
+import mongoose from 'mongoose';
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { FaArrowLeft } from 'react-icons/fa';
 import { convertToSerializableObject } from '@/utils/convertToObject';
 
 const PropertyPage = async ({ params }) => {
+  if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    notFound();
+  }
   await connectDB();
   const propertyDoc = await Property.findById(params.id).lean();
   const property = convertToSerializableObject(propertyDoc);
@@ -48,3 +53,5 @@ const PropertyPage = async ({ params }) => {
 };
 
 export default PropertyPage;
+
+
