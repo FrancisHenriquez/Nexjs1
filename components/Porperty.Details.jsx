@@ -4,8 +4,9 @@ import {
   FaBath,
   FaRulerCombined,
   FaCheck,
-  FaMapMarker,
-} from "react-icons/fa";
+  FaMapMarker
+} from 'react-icons/fa';
+import PropertyMap from './PropertyMap';
 
 const PropertyDetails = ({ property }) => {
   return (
@@ -38,7 +39,7 @@ const PropertyDetails = ({ property }) => {
           <div className="flex items-center justify-center mb-4 border-b border-gray-200 md:border-b-0 pb-4 md:pb-0">
             <div className="text-gray-500 mr-2 font-bold">Weekly</div>
             <div className="text-2xl font-bold text-blue-500">
-              {" "}
+              {' '}
               {property.rates.weekly ? (
                 `$${property.rates.weekly.toLocaleString()}`
               ) : (
@@ -49,7 +50,7 @@ const PropertyDetails = ({ property }) => {
           <div className="flex items-center justify-center mb-4 pb-4 md:pb-0">
             <div className="text-gray-500 mr-2 font-bold">Monthly</div>
             <div className="text-2xl font-bold text-blue-500">
-              {" "}
+              {' '}
               {property.rates.monthly ? (
                 `$${property.rates.monthly.toLocaleString()}`
               ) : (
@@ -66,18 +67,18 @@ const PropertyDetails = ({ property }) => {
           <p>
             <FaBed className="inline-block mr-2" />
             {property.beds}
-            {""}
+            {''}
             <span className="hidden sm:inline">Beds</span>
           </p>
           <p>
             <FaBath className="inline-block mr-2" /> {property.baths}
-            {""}
+            {''}
             <span className="hidden sm:inline">Baths</span>
           </p>
           <p>
             <FaRulerCombined className="inline-block mr-2" />
             {property.square_feet}
-            {""} <span className="hidden sm:inline">sqft</span>
+            {''} <span className="hidden sm:inline">sqft</span>
           </p>
         </div>
         <p className="text-gray-500 mb-4">{property.description}</p>
@@ -97,7 +98,7 @@ const PropertyDetails = ({ property }) => {
       </div>
       {/* <!-- Map --> */}
       <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-        <div id="map"></div>
+        <PropertyMap property={property} />
       </div>
     </main>
   );
