@@ -71,7 +71,8 @@ const PropertyCard = ({ property }) => {
             <FaMapMarker className="text-orange-700 mt-1" />
             <span className="text-orange-700">
               {' '}
-              {property.location.city} {property.location.state}{' '}
+              {property.location.street}
+              {''} {property.location.city} {property.location.state}{' '}
             </span>
           </div>
           <Link

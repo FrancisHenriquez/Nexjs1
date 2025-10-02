@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const PropertySchema = new mongoose.Schema(
   {
@@ -14,7 +14,24 @@ const PropertySchema = new mongoose.Schema(
     description: {
       type: String
     },
-    location: { String, city: String, state: String, zipcode: String },
+    location: {
+      street: {
+        type: String,
+        required: true
+      },
+      city: {
+        type: String,
+        required: true
+      },
+      state: {
+        type: String,
+        required: true
+      },
+      zipcode: {
+        type: String,
+        required: true
+      }
+    },
     beds: {
       type: Number,
       required: true
@@ -56,9 +73,9 @@ const PropertySchema = new mongoose.Schema(
   {
     timestamps: true
   }
-)
+);
 
 const Property =
-  mongoose.models.Property || mongoose.model('Property', PropertySchema)
+  mongoose.models.Property || mongoose.model('Property', PropertySchema);
 
-export default Property
+export default Property;
