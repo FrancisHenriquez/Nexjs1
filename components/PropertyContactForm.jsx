@@ -3,7 +3,6 @@ import { useEffect, useActionState } from 'react';
 import { useSession } from 'next-auth/react';
 import { toast } from 'react-toastify';
 import addMessage from '@/app/actions/addMessage';
-import { FaPaperPlane } from 'react-icons/fa';
 
 const PropertyContactForm = ({ property }) => {
   const { data: session } = useSession();
@@ -98,15 +97,7 @@ const PropertyContactForm = ({ property }) => {
               placeholder="Enter your message"
             ></textarea>
           </div>
-          <div>
-            <button
-              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline flex items-center justify-center"
-              type="submit"
-            >
-              <FaPaperPlane className="fas fa-paper-plane mr-2" />
-              Send Message
-            </button>
-          </div>
+          <div></div>
         </form>
       </div>
     )
