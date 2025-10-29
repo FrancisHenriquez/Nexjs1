@@ -1,7 +1,7 @@
 'use server';
 import connectDB from '@/config/database';
 import Message from '@/models/Message';
-
+import { revalidatePath } from 'next/cache';
 import { getSessionUser } from '@/utils/getSessionUser';
 
 async function addMessage(perviousState, formData) {
@@ -32,6 +32,7 @@ async function addMessage(perviousState, formData) {
   });
 
   await newMessage.save();
+  revalidatePath('/messages', 'page');
   return { submitted: true };
 }
 

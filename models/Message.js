@@ -7,6 +7,11 @@ const MessageSchema = new Schema(
       ref: 'User',
       require: true
     },
+    recipient: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      require: true
+    },
     property: {
       type: Schema.Types.ObjectId,
       ref: 'Property',
