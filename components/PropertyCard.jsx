@@ -1,14 +1,20 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 import {
   FaBed,
   FaBath,
   FaRulerCombined,
   FaMoneyBill,
-  FaMapMarker
-} from 'react-icons/fa';
+  FaMapMarker,
+} from "react-icons/fa";
 
-const PropertyCard = ({ property }) => {
+const PropertyCard = ({ property, searchParams }) => {
+  const searchParamsString = searchParams
+    ? new URLSearchParams(searchParams).toString()
+    : "";
+  const detailsHref = searchParamsString
+    ? `/properties/${property._id}?${searchParamsString}`
+    : `/properties/${property._id}`;
   const getRateDisplay = () => {
     const { rates } = property;
     if (rates.monthly) {
@@ -22,14 +28,16 @@ const PropertyCard = ({ property }) => {
 
   return (
     <div className="rounded-xl shadow-md relative">
-      <Image
-        src={property.images[0]}
-        alt=""
-        width="0"
-        height="0"
-        sizes="100vw"
-        className="w-full h-auto rounded-t-xl"
-      />
+      <Link href={detailsHref}>
+        <Image
+          src={property.images[0]}
+          alt=""
+          width="0"
+          height="0"
+          sizes="100vw"
+          className="w-full h-auto rounded-t-xl"
+        />{" "}
+      </Link>
       <div className="p-4">
         <div className="text-left md:text-center lg:text-left mb-6">
           <div className="text-gray-600">{property.type}</div>
@@ -41,16 +49,16 @@ const PropertyCard = ({ property }) => {
 
         <div className="flex justify-center gap-4 text-gray-500 mb-4">
           <p>
-            <FaBed className="md:hidden lg:inline" /> {property.beds}{' '}
+            <FaBed className="md:hidden lg:inline" /> {property.beds}{" "}
             <span className="md:hidden lg:inline">Beds</span>
           </p>
           <p>
-            <FaBath className="md:hidden lg:inline" /> {property.baths}{' '}
+            <FaBath className="md:hidden lg:inline" /> {property.baths}{" "}
             <span className="md:hidden lg:inline">Baths</span>
           </p>
           <p>
             <FaRulerCombined className="md:hidden lg:inline" />
-            {property.square_feet}{' '}
+            {property.square_feet}{" "}
             <span className="md:hidden lg:inline">sqft</span>
           </p>
         </div>
@@ -70,13 +78,13 @@ const PropertyCard = ({ property }) => {
           <div className="flex align-middle gap-2 mb-4 lg:mb-0">
             <FaMapMarker className="text-orange-700 mt-1" />
             <span className="text-orange-700">
-              {' '}
+              {" "}
               {property.location.street}
-              {''} {property.location.city} {property.location.state}{' '}
+              {""} {property.location.city} {property.location.state}{" "}
             </span>
           </div>
           <Link
-            href={`/properties/${property._id}`}
+            href={detailsHref}
             className="h-[36px] bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm"
           >
             Details
