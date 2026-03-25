@@ -1,8 +1,9 @@
 // "use client";
-import Link from "next/link";
-import PropertyCard from "@/components/PropertyCard";
-import connectDB from "@/config/database";
-import Property from "@/models/Property";
+import Link from 'next/link';
+import PropertyCard from '@/components/PropertyCard';
+import Pagination from '@/components/Pagination';
+import connectDB from '@/config/database';
+import Property from '@/models/Property';
 
 const PropertiesPage = async ({ searchParams }) => {
   const resolvedSearchParams = await searchParams;
@@ -16,6 +17,8 @@ const PropertiesPage = async ({ searchParams }) => {
   const total = await Property.countDocuments({});
   const totalPages = Math.max(1, Math.ceil(total / pageSizeNumber));
   const properties = await Property.find({}).skip(skip).limit(pageSizeNumber);
+
+  const showPagination = total > pageSize;
 
   return (
     <section className="px-4 py-6">
@@ -45,8 +48,8 @@ const PropertiesPage = async ({ searchParams }) => {
                     href={href}
                     className={`px-3 py-1 rounded border text-sm ${
                       isActive
-                        ? "bg-blue-500 border-blue-500 text-white"
-                        : "bg-white border-gray-300 text-gray-700 hover:bg-gray-50"
+                        ? 'bg-blue-500 border-blue-500 text-white'
+                        : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'
                     }`}
                   >
                     {pageValue}
@@ -55,6 +58,13 @@ const PropertiesPage = async ({ searchParams }) => {
               })}
             </nav>
           </>
+        )}
+        {showPagination && (
+          <Pagination
+            page={parseInt(page)}
+            pageSize={parseInt(pageSize)}
+            totalItems={total}
+          />
         )}
       </div>
     </section>
