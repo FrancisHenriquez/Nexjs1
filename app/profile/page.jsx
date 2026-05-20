@@ -5,16 +5,19 @@ import { getSessionUser } from '@/utils/getSessionUser';
 import profileDefault from '@/assets/images/profile.png';
 import ProfileProperties from '@/components/ProfileProperties';
 import { convertToSerializableObject } from '@/utils/convertToObject';
+import { redirect } from 'next/navigation';
+
+export const dynamic = 'force-dynamic';
 
 const profilePage = async () => {
   await connectDB();
 
   const sessionUser = await getSessionUser();
 
-  const { userId } = sessionUser;
+  const userId = sessionUser?.userId;
 
   if (!userId) {
-    throw new Error('User ID is required ');
+    redirect('/api/auth/signin?callbackUrl=/profile');
   }
 
   const propertiesDocs = await Property.find({ owner: userId }).lean();
@@ -28,7 +31,7 @@ const profilePage = async () => {
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/4 mx-20 mt-10">
               <div className="mb-4">
-                <img
+                <Image
                   className="h-32 w-32 md:h-48 md:w-48 rounded-full mx-auto md:mx-0"
                   src={sessionUser.user.image || profileDefault}
                   width={200}

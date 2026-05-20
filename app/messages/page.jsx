@@ -4,15 +4,18 @@ import '@/models/Property';
 import { convertToSerializableObject } from '@/utils/convertToObject';
 import { getSessionUser } from '@/utils/getSessionUser';
 import MessageCard from '@/components/MessageCard';
+import { redirect } from 'next/navigation';
+
+export const dynamic = 'force-dynamic';
 
 const MessagesPage = async () => {
-  connectDB();
+  await connectDB();
 
   const sessionUser = await getSessionUser();
   const userId = sessionUser?.userId;
 
   if (!userId) {
-    throw new Error('User must be signed in to view messages.');
+    redirect('/api/auth/signin?callbackUrl=/messages');
   }
 
   const readMessages = await Message.find({ recipient: userId, read: true })
@@ -38,17 +41,16 @@ const MessagesPage = async () => {
     <section className="bg-blue-50">
       <div className="container m-auto py-24 mas-w-6xl">
         <div className="bg-white px-6 py-8 mb-4 shadow-md rounded border m-4 md:m-0">
-          <h1 className="text-3xl font-bold mb-4">
-            <div className="space-y-4">
-              {messages.length === 0 ? (
-                <p>You have no message</p>
-              ) : (
-                messages.map((message) => (
-                  <MessageCard key={message._id} message={message} />
-                ))
-              )}
-            </div>
-          </h1>
+          <h1 className="text-3xl font-bold mb-4">Messages</h1>
+          <div className="space-y-4">
+            {messages.length === 0 ? (
+              <p>You have no message</p>
+            ) : (
+              messages.map((message) => (
+                <MessageCard key={message._id} message={message} />
+              ))
+            )}
+          </div>
         </div>
       </div>
     </section>

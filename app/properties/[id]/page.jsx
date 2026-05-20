@@ -14,11 +14,13 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { convertToSerializableObject } from '@/utils/convertToObject';
 
 const PropertyPage = async ({ params }) => {
-  if (!mongoose.Types.ObjectId.isValid(params.id)) {
+  const { id } = await params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
     notFound();
   }
   await connectDB();
-  const propertyDoc = await Property.findById(params.id).lean();
+  const propertyDoc = await Property.findById(id).lean();
   const property = convertToSerializableObject(propertyDoc);
 
   if (!property) {

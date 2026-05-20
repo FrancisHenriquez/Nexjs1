@@ -6,6 +6,8 @@ import { getSessionUser } from '@/utils/getSessionUser';
 import { convertToSerializableObject } from '@/utils/convertToObject';
 import { redirect } from 'next/navigation';
 
+export const dynamic = 'force-dynamic';
+
 const SavedPropertiesPage = async () => {
   await connectDB();
 

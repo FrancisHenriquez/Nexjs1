@@ -15,16 +15,17 @@ const PropertyImages = ({ images }) => {
               height="600"
             >
               {({ ref, open }) => (
-                <Image
-                  src={images[0]}
-                  ref={ref}
-                  onClick={open}
-                  alt=""
-                  className="object-cover h-[400px] mx-auto rounded-xl cursor-pointer"
-                  width={1800}
-                  height={400}
-                  priority={true}
-                />
+                <div className="relative h-[400px] max-w-[1800px] mx-auto">
+                  <Image
+                    src={images[0]}
+                    ref={ref}
+                    onClick={open}
+                    alt=""
+                    className="object-cover rounded-xl cursor-pointer"
+                    fill
+                    sizes="100vw"
+                  />
+                </div>
               )}
             </Item>
           ) : (
@@ -36,7 +37,7 @@ const PropertyImages = ({ images }) => {
                     images.length === 3 && index === 2
                       ? 'col-span-2'
                       : 'col-span-1'
-                  }`}
+                  } relative h-[400px]`}
                 >
                   <Item
                     original={image}
@@ -50,10 +51,9 @@ const PropertyImages = ({ images }) => {
                         ref={ref}
                         onClick={open}
                         alt=""
-                        className="object-cover h-[400px] w-full rounded-xl cursor-pointer"
-                        width={1800}
-                        height={400}
-                        priority={true}
+                        className="object-cover rounded-xl cursor-pointer"
+                        fill
+                        sizes="(min-width: 768px) 50vw, 100vw"
                       />
                     )}
                   </Item>
