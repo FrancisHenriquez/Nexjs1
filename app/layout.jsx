@@ -15,8 +15,8 @@ export const metadata = {
 
 const MainLayout = ({ children }) => {
   return (
-    <html>
-      <body>
+    <html suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <AuthProvider>
           <GlobalProvider>
             <Navbar />

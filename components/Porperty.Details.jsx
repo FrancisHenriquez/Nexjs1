@@ -1,11 +1,4 @@
-import {
-  FaTimes,
-  FaBed,
-  FaBath,
-  FaRulerCombined,
-  FaCheck,
-  FaMapMarker
-} from 'react-icons/fa';
+import HydrationSafeIcon from './HydrationSafeIcon';
 import PropertyMap from './PropertyMap';
 
 const PropertyDetails = ({ property }) => {
@@ -15,7 +8,7 @@ const PropertyDetails = ({ property }) => {
         <div className="text-gray-500 mb-4">{property.type}</div>
         <h1 className="text-3xl font-bold mb-4">{property.name}</h1>
         <div className="text-gray-500 mb-4 flex align-middle justify-center md:justify-start">
-          <FaMapMarker className=" text-orange-700 mt-1 ml-1" />
+          <HydrationSafeIcon name="mapMarker" className=" text-orange-700 mt-1 ml-1" />
           <p className="text-orange-700">
             {property.location.street}
             {property.location.city} {property.location.zipcode}
@@ -32,7 +25,7 @@ const PropertyDetails = ({ property }) => {
               {property.rates.nightly ? (
                 `$${property.rates.nightly.toLocaleString()}`
               ) : (
-                <FaTimes className="text-red-500" />
+                <HydrationSafeIcon name="times" className="text-red-500" />
               )}
             </div>
           </div>
@@ -43,7 +36,7 @@ const PropertyDetails = ({ property }) => {
               {property.rates.weekly ? (
                 `$${property.rates.weekly.toLocaleString()}`
               ) : (
-                <FaTimes className="text-red-500" />
+                <HydrationSafeIcon name="times" className="text-red-500" />
               )}
             </div>
           </div>
@@ -54,7 +47,7 @@ const PropertyDetails = ({ property }) => {
               {property.rates.monthly ? (
                 `$${property.rates.monthly.toLocaleString()}`
               ) : (
-                <FaTimes className="text-red-500" />
+                <HydrationSafeIcon name="times" className="text-red-500" />
               )}
             </div>
           </div>
@@ -65,18 +58,18 @@ const PropertyDetails = ({ property }) => {
         <h3 className="text-lg font-bold mb-6">Description & Details</h3>
         <div className="flex justify-center gap-4 text-blue-500 mb-4 text-xl space-x-9">
           <p>
-            <FaBed className="inline-block mr-2" />
+            <HydrationSafeIcon name="bed" className="inline-block mr-2" />
             {property.beds}
             {''}
             <span className="hidden sm:inline">Beds</span>
           </p>
           <p>
-            <FaBath className="inline-block mr-2" /> {property.baths}
+            <HydrationSafeIcon name="bath" className="inline-block mr-2" /> {property.baths}
             {''}
             <span className="hidden sm:inline">Baths</span>
           </p>
           <p>
-            <FaRulerCombined className="inline-block mr-2" />
+            <HydrationSafeIcon name="rulerCombined" className="inline-block mr-2" />
             {property.square_feet}
             {''} <span className="hidden sm:inline">sqft</span>
           </p>
@@ -90,7 +83,7 @@ const PropertyDetails = ({ property }) => {
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 list-none">
           {property.amenities.map((amenity, index) => (
             <li key={index}>
-              <FaCheck className="inline-block text-green-500 mr-2" />
+              <HydrationSafeIcon name="check" className="inline-block text-green-500 mr-2" />
               {amenity}
             </li>
           ))}

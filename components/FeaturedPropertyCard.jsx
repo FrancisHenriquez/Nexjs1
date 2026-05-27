@@ -1,12 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  FaBed,
-  FaBath,
-  FaRulerCombined,
-  FaMoneyBill,
-  FaMapMarker
-} from 'react-icons/fa';
+import HydrationSafeIcon from './HydrationSafeIcon';
 
 const FeaturedPropertyCard = ({ property }) => {
   const getRateDisplay = () => {
@@ -38,15 +32,15 @@ const FeaturedPropertyCard = ({ property }) => {
         </h3>
         <div className="flex justify-center gap-4 text-gray-500 mb-4">
           <p>
-            <FaBed className="inline-block mr-2" /> {property.beds}{' '}
+            <HydrationSafeIcon name="bed" className="inline-block mr-2" /> {property.beds}{' '}
             <span className="md:hidden lg:inline">Beds</span>
           </p>
           <p>
-            <FaBath className="inline-block mr-2" /> {property.baths}{' '}
+            <HydrationSafeIcon name="bath" className="inline-block mr-2" /> {property.baths}{' '}
             <span className="md:hidden lg:inline">Baths</span>
           </p>
           <p>
-            <FaRulerCombined className="inline-block mr-2" />{' '}
+            <HydrationSafeIcon name="rulerCombined" className="inline-block mr-2" />{' '}
             {property.square_feet}{' '}
             <span className="md:hidden lg:inline">sqft</span>
           </p>
@@ -55,19 +49,19 @@ const FeaturedPropertyCard = ({ property }) => {
         <div className="flex justify-center gap-4 text-green-900 text-sm mb-4">
           {property.rates.nightly && (
             <p>
-              <FaMoneyBill className="inline mr-2" /> Nightly
+              <HydrationSafeIcon name="moneyBill" className="inline mr-2" /> Nightly
             </p>
           )}
 
           {property.rates.weekly && (
             <p>
-              <FaMoneyBill className="inline mr-2" /> Weekly
+              <HydrationSafeIcon name="moneyBill" className="inline mr-2" /> Weekly
             </p>
           )}
 
           {property.rates.monthly && (
             <p>
-              <FaMoneyBill className="inline mr-2" /> Monthly
+              <HydrationSafeIcon name="moneyBill" className="inline mr-2" /> Monthly
             </p>
           )}
         </div>
@@ -76,7 +70,7 @@ const FeaturedPropertyCard = ({ property }) => {
 
         <div className="flex flex-col lg:flex-row justify-between">
           <div className="flex align-middle gap-2 mb-4 lg:mb-0">
-            <FaMapMarker className="text-orange-700" />
+            <HydrationSafeIcon name="mapMarker" className="text-orange-700" />
             <span className="text-orange-700">
               {' '}
               {property.location.city} {property.location.state}{' '}

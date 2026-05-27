@@ -10,8 +10,8 @@ import Property from '@/models/Property';
 import mongoose from 'mongoose';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { FaArrowLeft } from 'react-icons/fa';
 import { convertToSerializableObject } from '@/utils/convertToObject';
+import HydrationSafeIcon from '@/components/HydrationSafeIcon';
 
 const PropertyPage = async ({ params }) => {
   const { id } = await params;
@@ -41,7 +41,7 @@ const PropertyPage = async ({ params }) => {
             href="/properties"
             className="text-blue-500 hover:text-blue-600 flex items-center"
           >
-            <FaArrowLeft className="mr-2" /> Back to Properties
+            <HydrationSafeIcon name="arrowLeft" className="mr-2" /> Back to Properties
           </Link>
         </div>
       </section>

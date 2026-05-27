@@ -4,7 +4,7 @@ import PropertyShareFrom from '@/components/PropertySearchForm';
 import connectDB from '@/config/database';
 import Property from '@/models/Property';
 import { convertToSerializableObject } from '@/utils/convertToObject';
-import { FaArrowAltCircleLeft } from 'react-icons/fa';
+import HydrationSafeIcon from '@/components/HydrationSafeIcon';
 
 const SearchResultPage = async ({ searchParams }) => {
   await connectDB();
@@ -45,7 +45,7 @@ const SearchResultPage = async ({ searchParams }) => {
             href="/properties"
             className="flex items-center text-blue-500 hover:underline mb-3"
           >
-            <FaArrowAltCircleLeft className="mr-2 mb-1" /> Back To Properties
+            <HydrationSafeIcon name="arrowAltCircleLeft" className="mr-2 mb-1" /> Back To Properties
           </Link>
           <h1 className="text-2xl mb-4"> Search Results</h1>
           {properties.length === 0 ? (

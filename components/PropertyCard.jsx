@@ -1,12 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  FaBed,
-  FaBath,
-  FaRulerCombined,
-  FaMoneyBill,
-  FaMapMarker,
-} from "react-icons/fa";
+import HydrationSafeIcon from "./HydrationSafeIcon";
 
 const PropertyCard = ({ property, searchParams }) => {
   const searchParamsString = searchParams
@@ -49,15 +43,15 @@ const PropertyCard = ({ property, searchParams }) => {
 
         <div className="flex justify-center gap-4 text-gray-500 mb-4">
           <p>
-            <FaBed className="md:hidden lg:inline" /> {property.beds}{" "}
+            <HydrationSafeIcon name="bed" className="md:hidden lg:inline" /> {property.beds}{" "}
             <span className="md:hidden lg:inline">Beds</span>
           </p>
           <p>
-            <FaBath className="md:hidden lg:inline" /> {property.baths}{" "}
+            <HydrationSafeIcon name="bath" className="md:hidden lg:inline" /> {property.baths}{" "}
             <span className="md:hidden lg:inline">Baths</span>
           </p>
           <p>
-            <FaRulerCombined className="md:hidden lg:inline" />
+            <HydrationSafeIcon name="rulerCombined" className="md:hidden lg:inline" />
             {property.square_feet}{" "}
             <span className="md:hidden lg:inline">sqft</span>
           </p>
@@ -65,10 +59,10 @@ const PropertyCard = ({ property, searchParams }) => {
 
         <div className="flex justify-center gap-4 text-green-900 text-sm mb-4">
           <p>
-            <FaMoneyBill className="md:hidden lg:inline" /> Weekly
+            <HydrationSafeIcon name="moneyBill" className="md:hidden lg:inline" /> Weekly
           </p>
           <p>
-            <FaMoneyBill className="md:hidden lg:inline" /> Monthly
+            <HydrationSafeIcon name="moneyBill" className="md:hidden lg:inline" /> Monthly
           </p>
         </div>
 
@@ -76,7 +70,7 @@ const PropertyCard = ({ property, searchParams }) => {
 
         <div className="flex flex-col lg:flex-row justify-between mb-4">
           <div className="flex align-middle gap-2 mb-4 lg:mb-0">
-            <FaMapMarker className="text-orange-700 mt-1" />
+            <HydrationSafeIcon name="mapMarker" className="text-orange-700 mt-1" />
             <span className="text-orange-700">
               {" "}
               {property.location.street}

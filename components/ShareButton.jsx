@@ -1,4 +1,5 @@
 'use client';
+import { useEffect, useState } from 'react';
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -15,10 +16,15 @@ import {
 } from 'react-share';
 
 const ShareButtons = ({ property }) => {
+  const [isMounted, setIsMounted] = useState(false);
   const shareUrl = `${process.env.NEXT_PUBLIC_DOMAIN}/properties/${property._id}`;
   const propertyTypeSlug = property?.type
     ? property.type.replace(/\s/g, '')
     : 'Property';
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <>
@@ -29,7 +35,7 @@ const ShareButtons = ({ property }) => {
           quote={property.name}
           hashtag={`#${propertyTypeSlug}ForRent`}
         >
-          <FacebookIcon size={40} round={true} />
+          {isMounted && <FacebookIcon size={40} round={true} />}
         </FacebookShareButton>
 
         <TwitterShareButton
@@ -37,7 +43,7 @@ const ShareButtons = ({ property }) => {
           title={property.name}
           hashtags={[`#${propertyTypeSlug}ForRent`]}
         >
-          <TwitterIcon size={40} round={true} />
+          {isMounted && <TwitterIcon size={40} round={true} />}
         </TwitterShareButton>
 
         <WhatsappShareButton
@@ -45,7 +51,7 @@ const ShareButtons = ({ property }) => {
           title={property.name}
           separator="::"
         >
-          <WhatsappIcon size={40} round={true} />
+          {isMounted && <WhatsappIcon size={40} round={true} />}
         </WhatsappShareButton>
 
         <EmailShareButton
@@ -53,15 +59,15 @@ const ShareButtons = ({ property }) => {
           subject={property.name}
           body={`Check out this property listing: ${shareUrl}`}
         >
-          <EmailIcon size={40} round={true} />
+          {isMounted && <EmailIcon size={40} round={true} />}
         </EmailShareButton>
 
         <RedditShareButton url={shareUrl} title={property.name}>
-          <RedditIcon size={40} round={true} />
+          {isMounted && <RedditIcon size={40} round={true} />}
         </RedditShareButton>
 
         <TelegramShareButton url={shareUrl} title={property.name}>
-          <TelegramIcon size={40} round={true} />
+          {isMounted && <TelegramIcon size={40} round={true} />}
         </TelegramShareButton>
       </div>
     </>

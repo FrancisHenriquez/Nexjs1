@@ -1,5 +1,5 @@
 import { useFormStatus } from 'react-dom';
-import { FaPaperPlane } from 'react-icons/fa';
+import HydrationSafeIcon from './HydrationSafeIcon';
 
 const SubmitMessage = () => {
   const { pending } = useFormStatus();
@@ -9,7 +9,7 @@ const SubmitMessage = () => {
       type="submit"
       disabled={pending}
     >
-      <FaPaperPlane className="fas fa-paper-plane mr-2" />
+      <HydrationSafeIcon name="paperPlane" className="fas fa-paper-plane mr-2" />
       {''} {pending ? 'Sending...' : 'Send Message'}
     </button>
   );
